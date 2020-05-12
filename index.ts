@@ -13,16 +13,8 @@ export function updateQuality(items: Item[] = []) {
 
         switch (item.name) {
             case 'Backstage passes to a TAFKAL80ETC concert':
-                if (item.sellIn < 11) {
-                    item.quality += 1;
-                }
-                if (item.sellIn < 6) {
-                    item.quality += 1;
-                }
-                item.quality += 1;
-                if (item.sellIn < 1) {
-                    item.quality = 0;
-                }
+                item.quality += item.sellIn > 10 ? 1 : item.sellIn > 5 ? 2 : 3;
+                item.quality = item.sellIn < 1 ? 0 : item.quality;
                 break;
             case 'Aged Brie':
                 item.quality += 1;
